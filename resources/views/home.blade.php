@@ -12,21 +12,25 @@
 
         <p class="mt-2">This is your brand new Laravel app. Time to make it sing (or chirp)!</p>
 
-        @foreach ($chirps as $chirp)
+        @forelse ($chirps as $chirp)
             <article class="mt-6 rounded-lg bg-white p-6 shadow">
                 <div class="font-semibold">
-                    {{ $chirp['author'] }}
+                    {{ $chirp->user ? $chirp->user->name : 'Anónimo' }}
                 </div>
 
                 <p class="mt-1">
-                    {{ $chirp['message'] }}
+                    {{ $chirp->message }}
                 </p>
 
                 <p class="mt-2 text-sm text-gray-500">
-                    {{ $chirp['time'] }}
+                    {{ $chirp->created_at->diffForHumans() }}
                 </p>
             </article>
-        @endforeach
+        @empty
+            <p class="mt-6 text-gray-500">
+                Aún no hay publicaciones. ¡Sé el primero en publicar!
+            </p>
+        @endforelse
     </main>
 </body>
 </html>
