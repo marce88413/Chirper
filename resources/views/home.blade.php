@@ -20,6 +20,27 @@
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
+    <nav class="bg-white shadow">
+        <div class="mx-auto flex max-w-2xl items-center justify-between gap-4 p-6">
+            <a href="{{ route('home') }}" class="text-xl font-bold">
+                Chirper
+            </a>
+
+            @auth
+                <span class="text-sm">
+                    Hola, {{ auth()->user()->name }}
+                </span>
+            @else
+                <a
+                    href="{{ route('register') }}"
+                    class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                >
+                    Registrarse
+                </a>
+            @endauth
+        </div>
+    </nav>
+
     @if (session('success'))
         <div
             role="status"
