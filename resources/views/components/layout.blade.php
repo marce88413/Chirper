@@ -23,14 +23,18 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <nav class="bg-white shadow">
-        <div class="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-4 p-6">
-            <a href="{{ route('home') }}" class="inline-flex items-center">
-                <x-logo />
+<body class="min-h-screen bg-[#ededee] font-sans text-[#1a1a1c]">
+    <nav class="border-b border-black/10 bg-[#f7f7f8]">
+        <div class="flex min-h-[60px] w-full flex-wrap items-center justify-between gap-3 px-4 py-3">
+            <a
+                href="{{ route('home') }}"
+                class="inline-flex items-center"
+                aria-label="Chirper - Inicio"
+            >
+                <x-logo class="h-8 w-auto" />
             </a>
 
-            <div class="flex flex-wrap items-center gap-3">
+            <div class="flex flex-wrap items-center gap-4">
                 @auth
                     <span class="text-sm">
                         Hola, {{ auth()->user()->name }}
@@ -41,7 +45,7 @@
 
                         <button
                             type="submit"
-                            class="rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-100"
+                            class="rounded-[5px] border border-black/10 bg-transparent px-3 py-1.5 text-sm hover:bg-black/5"
                         >
                             Cerrar sesión
                         </button>
@@ -49,16 +53,16 @@
                 @else
                     <a
                         href="{{ route('login') }}"
-                        class="rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50"
+                        class="rounded-[5px] border border-black/10 px-3 py-1.5 text-sm text-[#1a1a1c] hover:bg-black/5"
                     >
-                        Iniciar sesión
+                        Sign In
                     </a>
 
                     <a
                         href="{{ route('register') }}"
-                        class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                        class="rounded-[5px] bg-[#5580d2] px-3 py-1.5 text-sm font-semibold text-white hover:bg-[#4469b0]"
                     >
-                        Registrarse
+                        Sign Up
                     </a>
                 @endauth
             </div>
@@ -76,7 +80,7 @@
 
     {{ $slot }}
 
-    <footer class="mt-24 border-t border-gray-300 bg-gray-100">
+    <footer class="mt-24">
         <div class="mx-auto max-w-2xl px-6 py-8 text-center">
             <p class="text-sm text-gray-500">
                 Chirper · Creado con Laravel

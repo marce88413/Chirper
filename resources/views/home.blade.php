@@ -1,22 +1,22 @@
-<x-layout title="Últimas publicaciones">
-    <main class="max-w-2xl mx-auto p-6">
-        <h1 class="mt-8 text-3xl font-bold">
-            Últimas publicaciones
+<x-layout title="Latest Chirps">
+    <main class="mx-auto w-full max-w-[704px] px-4 pt-[60px]">
+        <h1 class="text-3xl font-normal">
+            Latest Chirps
         </h1>
 
-        <div class="mt-8 rounded-lg bg-white p-6 shadow">
+        <div class="mt-8 rounded-[10px] border border-black/10 bg-[#f7f7f8] p-[14px]">
             <form method="POST" action="{{ url('/chirps') }}">
                 @csrf
 
-                <label for="message" class="mb-2 block font-semibold">
-                    ¿Qué estás pensando?
+                <label for="message" class="sr-only">
+                    What's on your mind?
                 </label>
 
                 <textarea
                     id="message"
                     name="message"
-                    placeholder="Escribe tu publicación..."
-                    class="w-full resize-none rounded-lg border p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 @error('message') border-red-500 @else border-gray-300 @enderror"
+                    placeholder="What's on your mind?"
+                    class="block h-[104px] w-full resize-none rounded-lg border bg-white px-3 py-2.5 text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500/25 @error('message') border-red-500 @else border-black/10 @enderror"
                     rows="4"
                     maxlength="255"
                     required
@@ -31,9 +31,9 @@
                 <div class="mt-4 flex justify-end">
                     <button
                         type="submit"
-                        class="rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+                        class="h-8 rounded-[5px] bg-[#5580d2] px-3 text-sm font-semibold text-white hover:bg-[#4469b0]"
                     >
-                        Publicar
+                        Chirp
                     </button>
                 </div>
             </form>
@@ -44,8 +44,8 @@
                 <x-chirp :chirp="$chirp" />
             @empty
                 <div class="py-12 text-center">
-                    <p class="text-gray-500">
-                        Aún no hay publicaciones. ¡Sé el primero en publicar!
+                    <p class="text-sm text-gray-500">
+                        No chirps yet. Be the first to chirp!
                     </p>
                 </div>
             @endforelse
