@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear cuenta - Chirper</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-gray-100 text-gray-900">
+<x-layout title="Crear cuenta">
     <main class="mx-auto max-w-md px-6 py-12">
-        <a href="{{ url('/') }}" class="text-blue-600 hover:underline">
+        <a href="{{ route('home') }}" class="text-blue-600 hover:underline">
             ← Volver a las publicaciones
         </a>
 
         <div class="mt-6 rounded-lg bg-white p-6 shadow">
-            <h1 class="mb-6 text-center text-3xl font-bold">
+            <h1 class="mb-6 mt-1 text-center text-xl font-bold">
                 Crear cuenta
             </h1>
 
@@ -37,7 +29,9 @@
                     >
 
                     @error('name')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        <p role="alert" class="mt-2 text-sm text-red-600">
+                            {{ $message }}
+                        </p>
                     @enderror
                 </div>
 
@@ -58,7 +52,9 @@
                     >
 
                     @error('email')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        <p role="alert" class="mt-2 text-sm text-red-600">
+                            {{ $message }}
+                        </p>
                     @enderror
                 </div>
 
@@ -78,7 +74,9 @@
                     >
 
                     @error('password')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        <p role="alert" class="mt-2 text-sm text-red-600">
+                            {{ $message }}
+                        </p>
                     @enderror
                 </div>
 
@@ -108,7 +106,17 @@
                     Registrarse
                 </button>
             </form>
+
+            <p class="mt-6 text-center text-sm">
+                ¿Ya tienes una cuenta?
+
+                <a
+                    href="{{ route('login') }}"
+                    class="text-blue-600 hover:underline"
+                >
+                    Iniciar sesión
+                </a>
+            </p>
         </div>
     </main>
-</body>
-</html>
+</x-layout>

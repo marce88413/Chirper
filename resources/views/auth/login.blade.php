@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión - Chirper</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-gray-100 text-gray-900">
+<x-layout title="Iniciar sesión">
     <main class="mx-auto max-w-md px-6 py-12">
-        <a href="{{ url('/') }}" class="text-blue-600 hover:underline">
+        <a href="{{ route('home') }}" class="text-blue-600 hover:underline">
             ← Volver a las publicaciones
         </a>
 
         <div class="mt-6 rounded-lg bg-white p-6 shadow">
-            <h1 class="mb-6 text-center text-3xl font-bold">
+            <h1 class="mb-6 mt-1 text-center text-xl font-bold">
                 Iniciar sesión
             </h1>
 
@@ -96,5 +88,4 @@
             </p>
         </div>
     </main>
-</body>
-</html>
+</x-layout>

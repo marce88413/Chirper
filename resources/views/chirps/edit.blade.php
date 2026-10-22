@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar publicación - Chirper</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-gray-100 text-gray-900">
+<x-layout title="Editar publicación">
     <main class="max-w-2xl mx-auto p-6">
         <h1 class="mt-8 text-3xl font-bold">
             Editar publicación
@@ -38,7 +30,7 @@
 
                 <div class="mt-4 flex items-center justify-between">
                     <a
-                        href="{{ url('/') }}"
+                        href="{{ route('home') }}"
                         class="rounded-lg px-4 py-2 text-gray-600 hover:bg-gray-100"
                     >
                         Cancelar
@@ -54,5 +46,4 @@
             </form>
         </div>
     </main>
-</body>
-</html>
+</x-layout>

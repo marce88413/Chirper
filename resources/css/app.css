@@ -4,6 +4,87 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    --color-blue-50: #eef3fc;
+    --color-blue-500: #6c92db;
+    --color-blue-600: #5580d2;
+    --color-blue-700: #4469b0;
+
+    --color-gray-100: #f7f7f8;
+    --color-gray-300: #e0e1e3;
+    --color-gray-500: #71717a;
+    --color-gray-600: #52525b;
+    --color-gray-900: #1a1a1c;
+}
+
+@layer base {
+    body {
+        min-height: 100vh;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 400;
+    }
+
+    button,
+    input,
+    textarea {
+        font: inherit;
+    }
+
+    button,
+    input[type='checkbox'] {
+        cursor: pointer;
+    }
+
+    textarea {
+        line-height: 1.6;
+    }
+
+    input:focus,
+    textarea:focus {
+        outline: 2px solid #5580d240;
+        outline-offset: 2px;
+    }
+}
+
+/* Navegación */
+nav.bg-white {
+    background-color: #f7f7f8;
+    border-bottom: 1px solid rgb(0 0 0 / 8%);
+    box-shadow: none;
+}
+
+/* Tarjetas del feed y formularios */
+article.rounded-lg,
+main > div.rounded-lg {
+    border: 1px solid rgb(0 0 0 / 8%);
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+/* Campos de los formularios */
+input:not([type='checkbox']),
+textarea {
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* Encabezados de nuestras vistas */
+main h1.font-bold {
+    font-weight: 400;
+}
+
+/* Botones y enlaces con aspecto de botón */
+button.rounded-lg,
+a.rounded-lg {
+    border-radius: 5px;
 }
