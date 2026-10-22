@@ -8,29 +8,21 @@
 </head>
 <body class="bg-gray-100 text-gray-900">
     <main class="max-w-2xl mx-auto p-6">
-        <h1 class="text-3xl font-bold">Chirper</h1>
+        <h1 class="mt-8 text-3xl font-bold">
+            Últimas publicaciones
+        </h1>
 
-        <p class="mt-2">This is your brand new Laravel app. Time to make it sing (or chirp)!</p>
-
-        @forelse ($chirps as $chirp)
-            <article class="mt-6 rounded-lg bg-white p-6 shadow">
-                <div class="font-semibold">
-                    {{ $chirp->user ? $chirp->user->name : 'Anónimo' }}
+        <div class="mt-8 space-y-4">
+            @forelse ($chirps as $chirp)
+                <x-chirp :chirp="$chirp" />
+            @empty
+                <div class="py-12 text-center">
+                    <p class="text-gray-500">
+                        Aún no hay publicaciones. ¡Sé el primero en publicar!
+                    </p>
                 </div>
-
-                <p class="mt-1">
-                    {{ $chirp->message }}
-                </p>
-
-                <p class="mt-2 text-sm text-gray-500">
-                    {{ $chirp->created_at->diffForHumans() }}
-                </p>
-            </article>
-        @empty
-            <p class="mt-6 text-gray-500">
-                Aún no hay publicaciones. ¡Sé el primero en publicar!
-            </p>
-        @endforelse
+            @endforelse
+        </div>
     </main>
 </body>
 </html>
