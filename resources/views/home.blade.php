@@ -21,23 +21,43 @@
 </head>
 <body class="bg-gray-100 text-gray-900">
     <nav class="bg-white shadow">
-        <div class="mx-auto flex max-w-2xl items-center justify-between gap-4 p-6">
+        <div class="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-4 p-6">
             <a href="{{ route('home') }}" class="text-xl font-bold">
                 Chirper
             </a>
 
-            @auth
-                <span class="text-sm">
-                    Hola, {{ auth()->user()->name }}
-                </span>
-            @else
-                <a
-                    href="{{ route('register') }}"
-                    class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-                >
-                    Registrarse
-                </a>
-            @endauth
+            <div class="flex flex-wrap items-center gap-3">
+                @auth
+                    <span class="text-sm">
+                        Hola, {{ auth()->user()->name }}
+                    </span>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <button
+                            type="submit"
+                            class="rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                            Cerrar sesión
+                        </button>
+                    </form>
+                @else
+                    <a
+                        href="{{ route('login') }}"
+                        class="rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50"
+                    >
+                        Iniciar sesión
+                    </a>
+
+                    <a
+                        href="{{ route('register') }}"
+                        class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                    >
+                        Registrarse
+                    </a>
+                @endauth
+            </div>
         </div>
     </nav>
 

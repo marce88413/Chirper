@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\Login;
+use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\ChirpController;
 use Illuminate\Support\Facades\Route;
@@ -10,11 +12,13 @@ Route::middleware('guest')->group(function () {
     Route::view('/register', 'auth.register')->name('register');
     Route::post('/register', Register::class);
 
-    // Temporal, mientras creamos el inicio de sesión.
-    Route::redirect('/login', '/register')->name('login');
+    Route::view('/login', 'auth.login')->name('login');
+    Route::post('/login', Login::class);
 });
 
 Route::middleware('auth')->group(function () {
+    Route::post('/logout', Logout::class)->name('logout');
+
     Route::post('/chirps', [ChirpController::class, 'store']);
     Route::get('/chirps/{chirp}/edit', [ChirpController::class, 'edit']);
     Route::put('/chirps/{chirp}', [ChirpController::class, 'update']);
