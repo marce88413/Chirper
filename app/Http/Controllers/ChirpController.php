@@ -24,7 +24,22 @@ class ChirpController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ], [
+            'message.required' => '¡Escribe algo para publicar!',
+            'message.string' => 'El mensaje debe ser texto.',
+            'message.max' => 'El mensaje debe tener como máximo 255 caracteres.',
+        ]);
+
+        Chirp::create([
+            'message' => $validated['message'],
+        ]);
+
+        return redirect('/')->with(
+            'success',
+            '¡Tu publicación se ha guardado!'
+        );
     }
 
     public function show(string $id)
