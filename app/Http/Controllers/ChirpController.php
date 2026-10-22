@@ -47,18 +47,36 @@ class ChirpController extends Controller
         //
     }
 
-    public function edit(string $id)
+    public function edit(Chirp $chirp)
     {
-        //
+        return view('chirps.edit', compact('chirp'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Chirp $chirp)
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ], [
+            'message.required' => '¡Escribe algo para publicar!',
+            'message.string' => 'El mensaje debe ser texto.',
+            'message.max' => 'El mensaje debe tener como máximo 255 caracteres.',
+        ]);
+
+        $chirp->update($validated);
+
+        return redirect('/')->with(
+            'success',
+            '¡La publicación se ha actualizado!'
+        );
     }
 
-    public function destroy(string $id)
+    public function destroy(Chirp $chirp)
     {
-        //
+        $chirp->delete();
+
+        return redirect('/')->with(
+            'success',
+            '¡La publicación se ha eliminado!'
+        );
     }
 }
